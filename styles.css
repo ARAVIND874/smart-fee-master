@@ -1,144 +1,126 @@
-/* Reset & Global */
+/* General Reset */
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
+/* Body Styling */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(135deg, #e0c3fc, #8ec5fc);
+  font-family: 'Poppins', 'Segoe UI', Tahoma, sans-serif;
+  background: linear-gradient(135deg, #dfe9f3, #ffffff);
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   padding: 20px 10px;
+  overflow: auto; /* Allow scrolling when necessary */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
-/* Container */
+/* Container Styling */
 .container {
   width: 100%;
-  max-width: 600px;
+  max-width: 400px;
   background: #ffffff;
   padding: 25px;
-  border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease;
+  box-sizing: border-box; /* Ensure padding doesn't overflow */
+  overflow-y: auto; /* Allow vertical scroll if needed */
 }
 
-/* Hidden Class */
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hidden */
 .hidden {
   display: none;
 }
 
 /* Form Elements */
-input, select, button, textarea {
+input, select, button {
   width: 100%;
   margin: 10px 0;
   padding: 14px;
   font-size: 16px;
   border: 1px solid #ccc;
-  border-radius: 8px;
+  border-radius: 10px;
   outline: none;
-  transition: border 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-input:focus, select:focus, textarea:focus {
-  border-color: #8ec5fc;
+input:focus, select:focus {
+  border-color: #3498db;
+  background: #f0f8ff;
 }
 
 button {
-  background: linear-gradient(to right, #d4145a, #fbb03b);
+  background: linear-gradient(to right, #6a11cb, #2575fc);
   color: white;
   font-weight: bold;
   cursor: pointer;
   border: none;
+  border-radius: 30px;
   transition: background 0.3s ease;
 }
 
 button:hover {
-  background: linear-gradient(to right, #f857a6, #ff5858);
+  background: linear-gradient(to right, #43cea2, #185a9d);
 }
 
 /* Error Message */
 .error {
   color: red;
+  margin-top: 5px;
   display: none;
 }
 
-/* Login Page */
-.login-container {
-  text-align: center;
-}
-
-.login-title {
-  font-size: 24px;
-  font-weight: bold;
-  color: #333;
-}
-
 /* Table Styling */
-.table-responsive {
-  overflow-x: auto;
-}
-
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
-  font-size: 15px;
+  font-size: 14px;
+  max-width: 100%; /* Prevent table from overflowing */
+  overflow-x: auto; /* Allow horizontal scroll for wide tables */
 }
 
-table, th, td {
-  border: 1px solid #ccc;
-  padding: 10px;
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px;
   text-align: center;
 }
 
-th {
-  background-color: #f0f0f0;
+thead {
+  background: linear-gradient(to right, #74ebd5, #acb6e5);
 }
 
-/* Action Buttons in Table */
-.action-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-.action-buttons button {
-  padding: 6px 10px;
-  font-size: 14px;
-  border-radius: 5px;
-}
-
-.action-buttons .print {
-  background-color: #28a745;
-}
-
-.action-buttons .delete {
-  background-color: #dc3545;
-}
-
-/* Receipt Section */
+/* Receipt Styling */
 .receipt-box {
   width: 95%;
-  max-width: 700px;
-  margin: 20px auto;
+  max-width: 100%;
+  margin: 30px auto;
   padding: 20px;
-  border: 3px solid #333;
-  background: #fff;
-  font-family: 'Times New Roman', Times, serif;
+  border: 2px dashed #2980b9;
+  background: #ffffff;
+  font-family: 'Georgia', serif;
   color: #000;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow-y: auto; /* Allow vertical scroll if content exceeds the box */
 }
 
 .receipt-header {
   display: flex;
   align-items: center;
   gap: 15px;
-  flex-wrap: wrap;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .logo {
@@ -146,24 +128,23 @@ th {
   height: 60px;
 }
 
-.receipt-header h2 {
+.receipt-header h1, .receipt-header h2, .receipt-header h3 {
   margin: 0;
-  color: #000;
-  font-size: 22px;
+  text-align: center;
 }
 
 .receipt-meta {
   display: flex;
   justify-content: space-between;
-  margin: 15px 0;
   font-size: 14px;
+  margin: 15px 0;
   flex-wrap: wrap;
 }
 
 .receipt-box h3 {
   text-align: center;
   text-decoration: underline;
-  margin-top: 10px;
+  margin-top: 20px;
   font-size: 18px;
 }
 
@@ -180,117 +161,86 @@ th {
 }
 
 .signature-section {
-  margin-top: 40px;
+  margin-top: 30px;
   text-align: right;
   padding-right: 30px;
+  font-weight: bold;
 }
 
 .print-note {
   font-size: 12px;
   text-align: center;
   margin-top: 20px;
-  color: #333;
-}
-
-/* Navigation or Header (Optional) */
-.header {
-  background-color: #fff;
-  padding: 15px;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-  margin-bottom: 20px;
-  text-align: center;
-  font-weight: bold;
-  font-size: 18px;
+  color: #555;
 }
 
 /* Responsive Design */
-@media (max-width: 480px) {
-  body {
-    padding: 10px 5px;
-    align-items: stretch;
-  }
-
-  .container {
-    padding: 15px;
-    border-radius: 12px;
-  }
-
-  input, select, button, textarea {
-    font-size: 15px;
+@media (max-width: 400px) {
+  input, select, button {
+    font-size: 14px;
     padding: 12px;
-    margin: 8px 0;
   }
 
-  .receipt-box {
-    width: 100%;
-    padding: 15px;
-    margin: 10px auto;
-  }
-
-  .receipt-header {
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
-  }
-
-  .receipt-header h2 {
-    font-size: 17px;
+  .receipt-header h1 {
+    font-size: 20px;
   }
 
   .receipt-meta {
     flex-direction: column;
-    gap: 6px;
-    font-size: 14px;
-  }
-
-  .receipt-table td {
-    font-size: 14px;
-    padding: 10px;
+    align-items: flex-start;
+    gap: 5px;
   }
 
   .signature-section {
     text-align: center;
     padding-right: 0;
-    font-size: 15px;
   }
 
-  .print-note {
-    font-size: 12px;
-    margin-top: 15px;
-  }
-
-  button {
-    font-size: 15px;
-    padding: 12px;
-  }
-
-  .action-buttons {
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .action-buttons button {
-    width: 100%;
-  }
-
-  .table-responsive {
-    overflow-x: auto;
-  }
-
-  .table-responsive table {
-    min-width: 600px;
-    font-size: 15px;
-  }
-
-  table th,
-  table td {
-    font-size: 15px;
-    padding: 10px;
+  .container {
+    padding: 15px;
+    max-width: 100%;
   }
 }
 
-/* Print Styles */
+/* Adjustments for very small screens (max-width: 300px) */
+@media (max-width: 300px) {
+  input, select, button {
+    font-size: 12px; /* Reduce font size further */
+    padding: 10px;  /* Reduce padding */
+  }
+
+  .container {
+    padding: 10px; /* Reduce container padding */
+  }
+
+  .receipt-header h1 {
+    font-size: 18px; /* Reduce heading font size */
+  }
+
+  .receipt-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+  }
+
+  .receipt-box h3 {
+    font-size: 16px; /* Reduce font size for headings */
+  }
+
+  .receipt-table td {
+    font-size: 12px; /* Smaller font size for table cells */
+  }
+
+  .signature-section {
+    font-size: 12px; /* Smaller font size for signature */
+  }
+
+  .print-note {
+    font-size: 10px; /* Smaller font size for print note */
+  }
+}
+
+/* Print Style */
 @media print {
   body * {
     visibility: hidden;
